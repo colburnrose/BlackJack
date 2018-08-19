@@ -2,7 +2,12 @@
 let txt = document.getElementById('text-area'),
     newBtn = document.getElementById('new-game-button'),
     hitBtn = document.getElementById('hit-button'),
-    stayBtn = document.getElementById('stay-btn');
+    stayBtn = document.getElementById('stay-button');
+
+    // start off hiding buttons.
+    hitBtn.style.display = 'none';
+    stayBtn.style.display = 'none';
+    
 
 // Card definition
 let suits = ["Hearts", "Diamonds", "Spades", "Clubs"],
@@ -17,10 +22,20 @@ function createDeck() {
     // loop through the suit and values of each suit
     for(let i =0; i < suits.length; i++){
         for(let j=0; j < values.length; j++){
-            deck.push(values[j] + ' of ' + suits[i]);
+            // card obj
+            let card = {
+                suit: suits[i],
+                value: values[j],
+            };
+            deck.push(card);
         }
     }
     return deck;
+}
+
+// function to print card
+function printCard(card) {
+    return card.value + ' of ' + card.suit;
 }
 
 // takes the first value of the deck and shift the rest down.
@@ -30,24 +45,24 @@ function getNextCard() {
 
 let deck = createDeck();
 
+hitBtn.addEventListener('click', function(){
+    // code here
+});
+
+newBtn.addEventListener('click', function(){
+    // code here
+});
+
+stayBtn.addEventListener('click', function(){
+    // code here
+});
 
 
-
-    // suits.forEach((suit) => {
-    //     values.forEach((value) => {
-    //         deck.push(suit, value);
-    //     })
-    // })
-
-    // loop through the deck
-    for(let i=0; i < deck.length; i++){
-        console.log(deck[i]);
-    }
-
+    // grabs two cards for the player.
     let playerCards = [getNextCard(), getNextCard()];
 
     console.log('Welcome to BlackJack');
     console.log('You have been dealt: ');
-    console.log(' ' + playerCards[0]);
-    console.log(' ' + playerCards[1]);
+    console.log(' ' + printCard(playerCards[0]));
+    console.log(' ' + printCard(playerCards[1]));
 
